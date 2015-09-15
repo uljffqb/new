@@ -3,7 +3,138 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css"/>
 	</head>
 	<body>
+		<div class="mui-content">
+			
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../images/yuantiao.jpg">
+						</a>
+						<p class="mui-slider-title">
+							静静看这世界
+						</p>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/shuijiao.jpg">
+						</a>
+						<p class="mui-slider-title">
+							幸福就是可以一起睡觉
+						</p>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/muwu.jpg">
+						</a>
+						<p class="mui-slider-title">
+							想要一间这样的木屋，静静的喝咖啡
+						</p>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/cbd.jpg">
+						</a>
+						<p class="mui-slider-title">
+							Color of SIP CBD
+						</p>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/yuantiao.jpg">
+						</a>
+						<p class="mui-slider-title">
+							静静看这世界
+						</p>
+					</div>
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../images/shuijiao.jpg">
+						</a>
+						<p class="mui-slider-title">
+							幸福就是可以一起睡觉
+						</p>
+					</div>
+				</div>
+				<div class="mui-slider-indicator mui-text-right">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+			
+			<ul class="mui-table-view" id="article-list">
+				<li class="mui-table-view-cell mui-hidden">cared
+					<div id="M_Toggle" class="mui-switch mui-active">
+						<div class="mui-switch-handle"></div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="article.html">
+						<img class="mui-media-object mui-pull-left" src="../images/shuijiao.jpg">
+						<div class="mui-media-body">
+							幸福
+							<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="#">
+						<img class="mui-media-object mui-pull-left" src="../images/muwu.jpg">
+						<div class="mui-media-body">
+							木屋
+							<p class='mui-ellipsis'>想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="#">
+						<img class="mui-media-object mui-pull-left" src="../images/cbd.jpg">
+						<div class="mui-media-body">
+							CBD
+							<p class='mui-ellipsis'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+						</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<a href="#">
+						<img class="mui-media-object mui-pull-left" src="../images/yuantiao.jpg">
+						<div class="mui-media-body">
+							远眺
+							<p class='mui-ellipsis'>静静的看这个世界，最后终于疯了</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		
+		
+		
+	<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/jQuery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		mui.init();
+		$.ajax({
+			type:"get",
+			url:domain,
+			async:true,
+			data:"",
+			dataType:"json",
+			success:function(data){
+				for(var i = 0; i < data.length; i++){
+					str = '<li class="mui-table-view-cell mui-media"><a href="'+data[i]["id"]+'"><img class="mui-media-object mui-pull-left" src="../images/shuijiao.jpg"><div class="mui-media-body">幸福<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p></div></a></li>';
+					$("#article-list").append(str);
+				}
+			}
+		});
+		mui("#article-list").on('tap','a',function(){
+			plus.webview.open("article.html","article.html");
+		})
+	</script>
 	</body>
 </html>
